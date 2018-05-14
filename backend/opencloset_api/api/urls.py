@@ -10,5 +10,5 @@ urlpatterns = [
     url(r'^section/(?P<pk>[0-9]+)$', ItemSectionDetail.as_view(), name='itemsection-detail'),
     url(r'^categories/$', ItemCategoryList.as_view()),
     url(r'^category/(?P<pk>[0-9]+)$', ItemCategoryDetail.as_view(), name='itemcategory-detail'),
-    url(r'^login', Login.as_view())
+    url(r'^login/', Login.as_view())
 ]
