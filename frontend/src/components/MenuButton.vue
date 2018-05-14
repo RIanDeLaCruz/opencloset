@@ -21,6 +21,6 @@ a {
   color: white;
   text-transform: uppercase;
   text-decoration: none;
-  font-size: 0.87rem;
+  font-size: 0.69rem;
 }
 </style>

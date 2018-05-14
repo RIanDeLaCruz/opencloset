@@ -17,12 +17,15 @@
           <li><MenuButton link="/category/womens" text="women's"/></li>
         </ul>
       </nav>
+      <SearchBar/>
     </div>
   </header>
 </template>
 
 <script>
 import MenuButton from '../components/MenuButton'
+import SearchBar from '../components/Search'
+
 export default {
   name: 'Navbar',
   props: {
@@ -30,7 +33,8 @@ export default {
     username: String
   },
   components: {
-    MenuButton
+    MenuButton,
+    SearchBar
   }
 }
 </script>
@@ -48,6 +52,14 @@ header {
 
 #logo {
   width: 20vw;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 15vw;
+  justify-content: space-around;
 }
 
 a {
