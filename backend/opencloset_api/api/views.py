@@ -1,6 +1,8 @@
 from django.shortcuts import render
 
-from rest_framework import generics
+from rest_framework import generics, status
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 from .models import User, Item, ItemSection, ItemCategory
 from .serializers import *
@@ -44,3 +46,10 @@ class ItemSectionList(generics.ListCreateAPIView):
 class ItemSectionDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = ItemSection.objects.all()
     serializer_class = ItemSectionSerializer
+
+class Login(APIView):
+    def post(self, request):
+        print(request.data['username'])
+        if User.objects.filter(username=request.data['username']):
+            return Response({'username': request.data['username']})
+        return Response(status=status.HTTP_404_NOT_FOUND)
