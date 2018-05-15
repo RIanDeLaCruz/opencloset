@@ -152,5 +152,7 @@ export default {
     border-radius: 1rem;
     margin-top: 1rem;
     border-style: solid;
+    background-color: rgb(85, 125, 110);
+    color: white;
   }
 </style>
