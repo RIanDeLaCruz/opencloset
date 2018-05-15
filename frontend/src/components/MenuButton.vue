@@ -1,5 +1,5 @@
 <template>
-  <a :href="link">{{ text }}</a>
+  <router-link :to="{ path: link }">{{text}}</router-link>
 </template>
 
 <script>

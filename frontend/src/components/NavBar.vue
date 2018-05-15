@@ -11,10 +11,16 @@
     <div class="menulist">
       <nav>
         <ul>
-          <li><MenuButton link="/" text="home"/></li>
+          <li v-bind:class="{ active: isHome }">
+            <MenuButton link="/" text="home"/>
+          </li>
           <li><MenuButton link="/about" text="about"/></li>
-          <li><MenuButton link="/category/mens" text="men's"/></li>
-          <li><MenuButton link="/category/womens" text="women's"/></li>
+          <li v-bind:class="{ active: isMen }">
+            <MenuButton link="/category/1" text="men's"/>
+          </li>
+          <li v-bind:class="{ active: isWomen }">
+            <MenuButton link="/category/2" text="women's"/>
+          </li>
         </ul>
       </nav>
       <SearchBar/>
@@ -30,11 +36,23 @@ export default {
   name: 'Navbar',
   props: {
     isLoggedIn: Boolean,
-    username: String
+    username: String,
+    currentRoute: Object
   },
   components: {
     MenuButton,
     SearchBar
+  },
+  computed: {
+    isHome: function() {
+      return this.$route.name == 'Index'
+    },
+    isMen: function() {
+      return this.$route.name == 'Category' && this.$route.params.id == 1
+    },
+    isWomen: function() {
+      return this.$route.name == 'Category' && this.$route.params.id == 2
+    }
   }
 }
 </script>
@@ -95,5 +113,9 @@ nav ul li:not(:first-child) {
 
 nav ul li:last-child {
   margin-right: 0;
+}
+
+nav li.active a {
+  background-color: rgb(85, 125, 110);
 }
 </style>

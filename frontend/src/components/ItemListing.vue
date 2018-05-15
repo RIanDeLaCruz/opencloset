@@ -1,9 +1,9 @@
 <template>
-  <figure>
+  <figure class="listing">
     <div class="image_wrapper">
       <img :src="image_url" alt="">
     </div>
-    <figcaption>
+    <figcaption class="listing_caption">
       <h2>{{ name }}</h2>
       <h3>{{ lent_by }}</h3>
       <p><strong>Size:</strong> {{ size }}</p>
@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style>
-figure {
+.listing {
   width: 100%;
   height: 100%;
   margin: 0;
@@ -31,7 +31,7 @@ figure {
   align-items: center;
 }
 
-figure img {
+.listing img {
   width: 100%;
 }
 
@@ -40,7 +40,7 @@ figure img {
   height: 100%;
 }
 
-figcaption {
+.listing_caption {
   width: 50%;
   min-height: 70%;
   padding: 1rem;
@@ -51,17 +51,27 @@ figcaption {
   flex-direction: column;
 }
 
-figcaption h2,
-figcaption h3,
-figcaption p {
+.listing_caption h2,
+.listing_caption h3,
+.listing_caption p {
   margin: 0;
 }
 
-figcaption p:first-of-type {
+.listing_caption h2 {
+    color: rgb(85, 125, 110);
+}
+
+.listing_caption h3 {
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1em;
+}
+
+.listing_caption p:first-of-type {
   margin-top: 1rem;
 }
 
-figcaption p:last-of-type {
+.listing_caption p:last-of-type {
   margin-top: 1rem;
 }
 </style>
