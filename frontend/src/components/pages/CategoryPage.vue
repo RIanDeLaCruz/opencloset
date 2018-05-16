@@ -6,7 +6,7 @@
         <ItemListing
           :name="item.name"
           :image_url="item.picture"
-          :lent_by="`${item.lent_by.first_name} ${item.lent_by.last_name}`"
+          :lent_by="item.lent_by"
           :size="item.size"
           :brand="item.brand"
           :price="item.price"
