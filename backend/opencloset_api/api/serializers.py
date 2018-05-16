@@ -21,8 +21,6 @@ class ItemSerializer(serializers.HyperlinkedModelSerializer):
         slug_field='name',
         queryset=ItemCategory.objects.all()
     )
-    lent_by = UserSerializer(context={'request': None}, read_only=True)
-
 
     class Meta:
         model = Item
