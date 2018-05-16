@@ -21,6 +21,10 @@ class ItemSerializer(serializers.HyperlinkedModelSerializer):
         slug_field='name',
         queryset=ItemCategory.objects.all()
     )
+    lent_by = serializers.SlugRelatedField(
+        slug_field='name',
+        queryset=User.objects.all()
+    )
 
     class Meta:
         model = Item
