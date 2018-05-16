@@ -22,7 +22,7 @@ class ItemSerializer(serializers.HyperlinkedModelSerializer):
         queryset=ItemCategory.objects.all()
     )
     lent_by = serializers.SlugRelatedField(
-        slug_field='name',
+        slug_field='username',
         queryset=User.objects.all()
     )
 
