@@ -3,9 +3,11 @@
     <div class="identity_bar">
       <img src="../assets/logo.png" alt="" id="logo">
       <div class="actions">
-        <span v-if="isLoggedIn">Hello, <span="green">{{username}}</span></span>
-        <a class="action" href="/signup">SIGN UP</a>
-        <a class="action" href="/login">LOGIN</a>
+        <span v-if="isLoggedIn">Hello, <span class="green">{{username}}</span></span>
+        <router-link to="signup" class="action" v-if="!isLoggedIn">SIGN UP</router-link>
+        <a class="action" href="#login" v-if="!isLoggedIn && $router.name == 'Home'">LOGIN</a>
+        <a class="action" href="/" v-else-if="!isLoggedIn">LOGIN</a>
+        <a class="action" href="#" v-else @click="logOut">Log out</a>
       </div>
     </div>
     <div class="menulist">
@@ -52,6 +54,12 @@ export default {
     },
     isWomen: function() {
       return this.$route.name == 'Category' && this.$route.params.id == 2
+    }
+  },
+  methods: {
+    logOut() {
+      window.localStorage.removeItem('username')
+      this.$emit('logout', '')
     }
   }
 }

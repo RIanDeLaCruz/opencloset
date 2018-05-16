@@ -34,7 +34,7 @@
         </div>
       </div>
     </div>
-    <div class="login">
+    <div class="login" id="login">
       <div class="login_form">
         <h1>Sign In</h1>
         <form>
@@ -76,9 +76,12 @@ export default {
         password: this.password
       })
       .then(res => {
-        console.log(res)
+        window.localStorage.setItem('username', res.data.username)
+        this.$emit('loggedIn', window.localStorage.getItem('username'))
+        this.$router.push({name: 'Category', params: {id: 1}})
       })
       .catch(err => {
+        console.log(err)
         console.log(err.response)
       })
     }

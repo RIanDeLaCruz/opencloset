@@ -36,15 +36,6 @@ export default {
       console.log(err)
     })
   },
-  beforeUpdate() {
-    axios.get(`http://opencloset.local/api/section/${this.$route.params.id}`)
-    .then(res => {
-      this.category = res.data
-    })
-    .catch(err => {
-      console.log(err)
-    })
-  },
   components: {
     ItemListing
   }

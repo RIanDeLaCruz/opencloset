@@ -1,7 +1,13 @@
 <template>
   <div id="app">
-    <Navbar :currentRoute="$route"/>
-    <router-view/>
+    <Navbar
+      :currentRoute="$route"
+      :username="username"
+      :isLoggedIn="isLoggedIn"
+      v-if="isLoggedIn"
+      @logout="logouthandler"/>
+    <Navbar :currentRoute="$route" v-else />
+    <router-view @loggedIn="handler"/>
   </div>
 </template>
 
@@ -12,6 +18,25 @@ export default {
   components: {
     Navbar
   },
+  data() {
+    return {
+      username: '',
+      isLoggedIn: false
+    }
+  },
+  methods: {
+    handler(val) {
+      console.log(val)
+      if(val != '') {
+        this.username = val
+        this.isLoggedIn = true
+      }
+    },
+    logouthandler(val) {
+      this.username = ''
+      this.isLoggedIn = false
+    }
+  }
 }
 </script>
 
